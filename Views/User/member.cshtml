@@ -1,0 +1,104 @@
+﻿
+@{
+    ViewBag.Title = "member";
+}
+<script type="text/javascript" src="~/Scripts/CollapsibleLists.js"></script>
+    <script type="text/javascript" src="~/Scripts/jquery-1.8.2.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+        //    alert('I am an anonymous function');
+            CollapsibleLists.apply();
+        });
+    </script>
+	<div id="body">
+		<div class="content">
+			<div class="section">
+              <div class="contact">
+                  <div id="d1">
+					<h2>Change Password</h2>
+					<form action="/User/changePassword" method="post">
+						<div class="form1">
+							<p>@ViewBag.message</p>
+							<label for="schedule"> <span>Old Password *</span>
+								<input required="required" type="password" name="oldpassword" id="oldpassword">
+							</label>
+                            <label for="schedule"> <span>New Password *</span>
+								<input required="required" type="password" name="newpassword" id="newpassword">
+							</label>
+                            <label for="schedule"> <span>Re-type Password *</span>
+								<input required="required" type="password" name="renewpassword" id="renewpassword">
+							</label>
+						</div>
+						
+						<input type="submit" name="send" id="send" value="">
+					</form>
+                   </div>
+			    </div>
+            </div>
+		    <div class="sidebar">
+				<div class="navigation">
+					
+					<ul>
+                        <li class="selected">
+
+                        </li>
+                        <li>
+
+                        </li>
+                        @if(this.Session["User"] != null && ((LMS.Models.User)this.Session["User"]).email
+                            .Equals("admin@pucit.edu.pk") &&
+                            Session["SignIn"] != null && (bool)Session["SignIn"] == true
+                            )
+                            {
+                                <li>
+                                    <ul class="collapsibleList">
+                                        <li>
+                                            <a href="#">Admin Panel</a>
+                                            <ul style="margin-left:1em">
+                                                <li>
+                                                    <a href="/User/uploadbook">- Add Book</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/User/viewbooks">- View Books</a>
+                                                </li>
+                                             
+                                                <li>
+                                                    <a href="#">- View Users</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            }
+                        
+						<li >
+							<a href="/User/issuedbooks">Issued Books</a>
+						</li>
+						<li>
+							<a href="/User/returnedsBooks">History</a>
+						</li>
+						<li>
+							<a href="/LMS/member">Change Password</a>
+						</li>
+						
+					</ul>
+				</div>
+             </div>
+            
+		</div>
+	</div>
+<script type="text/javascript">
+    window.onload = function () {
+        document.getElementById("newpassword").onchange = validatePassword;
+        document.getElementById("renewpassword").onchange = validatePassword;
+    }
+    function validatePassword() {
+        var pass2 = document.getElementById("newpassword").value;
+        var pass1 = document.getElementById("renewpassword").value;
+        if (pass1 != pass2)
+            document.getElementById("renewpassword").setCustomValidity("Passwords Don't Match");
+        else
+            document.getElementById("renewpassword").setCustomValidity('');
+        //empty string means no validation error
+    }
+</script>

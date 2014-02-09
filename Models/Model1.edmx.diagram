@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7310b789b503488ca2056766105e829b" Name="Diagram1" ZoomLevel="99">
+        <EntityTypeShape EntityType="Database1Model.User" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Database1Model.Book" Width="1.5" PointX="7.3639761709440386" PointY="2.8438703729044041" />
+        <EntityTypeShape EntityType="Database1Model.Borrow" Width="1.5" PointX="1.5842906989084047" PointY="10.433657069892464" />
+        <AssociationConnector Association="Database1Model.FK_Borrow_Book" />
+        <AssociationConnector Association="Database1Model.FK_Borrow_Member" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

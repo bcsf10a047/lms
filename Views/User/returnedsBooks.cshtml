@@ -1,0 +1,107 @@
+﻿@model List<LMS.Models.Book>
+
+	<div id="body">
+		<div class="content">
+			<div class="section">
+				<div class="breadcrumb">
+					<span>You are here:</span>
+					<ul>
+						<li>
+							<a href="index.html">home</a>
+						</li>
+						<li>
+							<a href="~/Views/LMS/services">services</a>
+						</li>
+						<li>
+							<a href="~/Views/LMS/services">engine maintenance</a>
+						</li>
+					</ul>
+				</div>
+				<div class="services">
+					<h2 id="iii">Books</h2>
+                    <form action="/user/issuedbooks">
+				        <input type="text" name="search" id="search" value="">
+				        <input type="submit" name="searchBtn" id="searchBtn" value="Seacrh">
+			        </form>
+                    <table id="t1" border="1">
+                        <tr>
+                            
+                            <th colspan="3"><a href="/user/returnedsBooks?currentFilter=Title&search=@ViewBag.search" id="title">Title</a> </th>
+                            <th colspan="2"><a href="/user/returnedsBooks?currentFilter=Subject&search=@ViewBag.search" id="subject">Subject</a></th>
+                            <th colspan="3"><a href="/user/returnedsBooks?currentFilter=Author&search=@ViewBag.search" id="author">Author</a></th>
+                            <th colspan="4"><a href="/user/returnedsBooks?currentFilter=Totle&search=@ViewBag.search" id="copys1">Total Copies </a></th>
+                            <th colspan="4"><a href="/user/returnedsBooks?currentFilter=Available&search=@ViewBag.search" id="copys">Avialable Copies </a></th>
+                            <th colspan="2"><a href="/user/returnedsBooks?currentFilter=Shelf&search=@ViewBag.search" id="shelfno">Shelf No </a></th>
+                        </tr>
+                                            
+				        @{
+                            foreach (var x in Model)
+                            {
+                                <tr>
+                                    <td colspan="3">@x.Title</td>
+                                    <td colspan="2">@x.Subject</td>
+                                    <td colspan="3">@x.Author</td>
+                                    <td colspan="4">@x.NumberOfBooks</td>
+                                    <td colspan="4">@x.NumberOfAvailableBooks</td>
+                                    <td colspan="2">@x.ShelfNo</td>
+                                    
+                                    
+                                </tr>
+
+                            }
+                        }
+					</table>
+				</div>
+                
+			</div>
+		    <div class="sidebar">
+				<div class="navigation">
+					
+					<ul>
+                        <li class="selected">
+
+                        </li>
+                        <li>
+
+                        </li>
+                        @if(this.Session["User"] != null && ((LMS.Models.User)this.Session["User"]).email
+                            .Equals("admin@pucit.edu.pk") &&
+                            Session["SignIn"] != null && (bool)Session["SignIn"] == true
+                            )
+                            {
+                                <li>
+                                    <ul class="collapsibleList">
+                                        <li>
+                                            <a href="#">Admin Panel</a>
+                                            <ul style="margin-left:1em">
+                                                <li>
+                                                    <a href="/User/uploadbook">- Add Book</a>
+                                                </li>
+                                                <li>
+                                                    <a href="/User/viewbooks">- View Books</a>
+                                                </li>
+                                             
+                                                <li>
+                                                    <a href="#">- View Users</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            }
+                        
+						<li >
+							<a href="/User/issuedbooks">Issued Books</a>
+						</li>
+						<li>
+							<a href="/User/returnedsBooks">History</a>
+						</li>
+						<li>
+							<a href="/LMS/member">Change Password</a>
+						</li>
+						
+					</ul>
+				</div>
+             </div>
+		</div>
+	</div>

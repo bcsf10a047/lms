@@ -1,0 +1,113 @@
+﻿@model List<LMS.Models.Book>
+
+	<div id="body">
+<script type="text/javascript">
+    
+    $('#iii').click(function () { alert("No")});
+    //$('#title').click(function () {  alert("hi"); return false;});
+    //$('#subject').click(function () { sort('subject'); return false; });
+    //$('#author').click(function () { sort('author'); return false; });
+    //$('#copys').click(function () { sort('copys'); return false; });
+    //$('#shelfno').click(function () { sort('shelfno'); return false; });
+</script>
+		<div class="content">
+			<div class="section">
+				<div class="breadcrumb">
+					<span>You are here:</span>
+					<ul>
+						<li>
+							<a href="index.html">home</a>
+						</li>
+						<li>
+							<a href="~/Views/LMS/services">services</a>
+						</li>
+						<li>
+							<a href="~/Views/LMS/services">engine maintenance</a>
+						</li>
+					</ul>
+				</div>
+				<div class="services">
+					<h2 id="iii">Books</h2>
+                    <form action="/user/viewbooks">
+				        <input type="text" name="search" id="search" value="">
+				        <input type="submit" name="searchBtn" id="searchBtn" value="Seacrh">
+			        </form>
+                    <table id="t1" border="1">
+                        <tr>
+                            
+                            <th colspan="3"><a href="/user/viewbooks?currentFilter=Title&search=@ViewBag.search" id="title">Title</a> </th>
+                            <th colspan="2"><a href="/user/viewbooks?currentFilter=Subject&search=@ViewBag.search" id="subject">Subject</a></th>
+                            <th colspan="3"><a href="/user/viewbooks?currentFilter=Author&search=@ViewBag.search" id="author">Author</a></th>
+                            <th colspan="4"><a href="/user/viewbooks?currentFilter=Totle&search=@ViewBag.search" id="copys1">Total Copies </a></th>
+                            <th colspan="4"><a href="/user/viewbooks?currentFilter=Available&search=@ViewBag.search" id="copys">Avialable Copies </a></th>
+                            <th colspan="2"><a href="/user/viewbooks?currentFilter=Shelf&search=@ViewBag.search" id="shelfno">Shelf No </a></th>
+                        </tr>
+                                            
+				        @{
+                            foreach (var x in Model)
+                            {
+                                <tr>
+                                    <td colspan="3">@x.Title</td>
+                                    <td colspan="2">@x.Subject</td>
+                                    <td colspan="3">@x.Author</td>
+                                    <td colspan="4">@x.NumberOfBooks</td>
+                                    <td colspan="4">@x.NumberOfAvailableBooks</td>
+                                    <td colspan="2">@x.ShelfNo</td>
+                                    
+                                    <td colspan="2"><a href="@String.Concat("/user/editbook/"+x.bId)">Edit</a></td>
+                                </tr>
+
+                            }
+                        }
+					</table>
+				</div>
+                
+			</div>
+			<div class="sidebar">
+				<div class="navigation">
+					<h3>Services</h3>
+					<ul>
+						<li class="selected">
+							<a href="/LMS/services">engine maintenance</a>
+						</li>
+						<li>
+							<a href="/LMS/services">wheel alignment</a>
+						</li>
+						<li>
+							<a href="/LMS/services">air condition services</a>
+						</li>
+						<li>
+							<a href="/LMS/services">transmission</a>
+						</li>
+						<li>
+							<a href="promo.html">promos &amp; discounts</a>
+						</li>
+					</ul>
+				</div>
+				<div class="contact">
+					<h3>contact information</h3>
+					<ul>
+						<li>
+							<b>address:</b> <span>426 Grant Street Pine Hill, TX 75652</span>
+						</li>
+						<li>
+							<b>phone:</b> <span>903-889-6313</span>
+						</li>
+						<li>
+							<b>fax:</b> <span>903-889-6313</span>
+						</li>
+						<li>
+							<b>email:</b> <span><a href="http://www.freewebsitetemplates.com/misc/contact">info@carrepairshop.com</a></span>
+						</li>
+					</ul>
+				</div>
+				<div class="gallery">
+					<h3>featured from gallery</h3>
+					<a href="gallery.html" class="figure"><img src="~/images/featured.jpg" alt=""></a> <span><a href="gallery.html">Aenean interdum erat urna</a></span>
+					<p>
+						Nam lectus quam, dictum a vehicula ut, congue ac arcu. Sed vitae nisi ut nibh iaculis bibendums.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>

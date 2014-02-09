@@ -1,0 +1,148 @@
+﻿@model LMS.Models.Book
+@{
+    ViewBag.Title = "issuebook";
+}
+
+<div id="body">
+		<div class="content">
+			<div class="section">
+				<div class="breadcrumb">
+					<span>You are here:</span>
+					<ul>
+						<li>
+							<a href="index.html">home</a>
+						</li>
+						<li>
+							<a href="~/Views/LMS/services">services</a>
+						</li>
+						<li>
+							<a href="~/Views/LMS/services">engine maintenance</a>
+						</li>
+					</ul>
+				</div>
+				<div class="services">
+					@using (Html.BeginForm()) {
+   
+
+                     <fieldset>
+                        <legend>Book</legend>
+
+                        @Html.HiddenFor(model => model.bId)
+
+                        <div class="editor-label">
+                           @Html.LabelFor(model => model.Title)
+                        </div>
+                         <div class="editor-field">
+                            @Html.EditorFor(model => model.Title)
+                            @Html.ValidationMessageFor(model => model.Title)
+                        </div>
+                         <div class="editor-label">
+                            @Html.LabelFor(model => model.Subject)
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.Subject)
+                            @Html.ValidationMessageFor(model => model.Subject)
+                        </div>
+                         <div class="editor-label">
+                            @Html.LabelFor(model => model.Author)
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.Author)
+                            @Html.ValidationMessageFor(model => model.Author)
+                        </div>
+                         <div class="editor-label">
+                            @Html.LabelFor(model => model.Edition)
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.Edition)
+                            @Html.ValidationMessageFor(model => model.Edition)
+                        </div>
+                         <div class="editor-label">
+                            @Html.LabelFor(model => model.NumberOfBooks)
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.NumberOfBooks)
+                            @Html.ValidationMessageFor(model => model.NumberOfBooks)
+                        </div>
+                         <div class="editor-label">
+                            @Html.LabelFor(model => model.NumberOfAvailableBooks)
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.NumberOfAvailableBooks)
+                            @Html.ValidationMessageFor(model => model.NumberOfAvailableBooks)
+                        </div>
+                         <div class="editor-label">
+                            @Html.LabelFor(model => model.Available)
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.Available)
+                            @Html.ValidationMessageFor(model => model.Available)
+                        </div>
+                         <div class="editor-label">
+                            @Html.LabelFor(model => model.ShelfNo)
+                        </div>
+                        <div class="editor-field">
+                            @Html.EditorFor(model => model.ShelfNo)
+                            @Html.ValidationMessageFor(model => model.ShelfNo)
+                        </div>
+                        <p>
+                            <input type="submit" value="Save" />
+                        </p>
+                    </fieldset>
+                }
+
+                <div>
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+                
+			</div>
+			<div class="sidebar">
+				<div class="navigation">
+					<h3>Services</h3>
+					<ul>
+						<li class="selected">
+							<a href="/LMS/services">engine maintenance</a>
+						</li>
+						<li>
+							<a href="/LMS/services">wheel alignment</a>
+						</li>
+						<li>
+							<a href="/LMS/services">air condition services</a>
+						</li>
+						<li>
+							<a href="/LMS/services">transmission</a>
+						</li>
+						<li>
+							<a href="promo.html">promos &amp; discounts</a>
+						</li>
+					</ul>
+				</div>
+				<div class="contact">
+					<h3>contact information</h3>
+					<ul>
+						<li>
+							<b>address:</b> <span>426 Grant Street Pine Hill, TX 75652</span>
+						</li>
+						<li>
+							<b>phone:</b> <span>903-889-6313</span>
+						</li>
+						<li>
+							<b>fax:</b> <span>903-889-6313</span>
+						</li>
+						<li>
+							<b>email:</b> <span><a href="http://www.freewebsitetemplates.com/misc/contact">info@carrepairshop.com</a></span>
+						</li>
+					</ul>
+				</div>
+				<div class="gallery">
+					<h3>featured from gallery</h3>
+					<a href="gallery.html" class="figure"><img src="~/images/featured.jpg" alt=""></a> <span><a href="gallery.html">Aenean interdum erat urna</a></span>
+					<p>
+						Nam lectus quam, dictum a vehicula ut, congue ac arcu. Sed vitae nisi ut nibh iaculis bibendums.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>

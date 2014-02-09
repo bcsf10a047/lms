@@ -1,0 +1,37 @@
+﻿t<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <script type=" text/javascript" src="~/Scripts/jquery-1.8.2.js"></script>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="~/Content/style.css" type="text/css">
+	<!--[if lt IE 9]>
+		<link rel="stylesheet" type="text/css" href="css/ie.css">
+	<![endif]-->
+    
+
+    @*<script>
+        $('#searchBtm').click(function () {
+
+           // $.getJSON("/LMS/search"+$('#search'), function (data) {
+            alert('jiji');
+            });
+       
+    </script>*@
+</head>
+
+<body>
+
+    @RenderPage("header.cshtml")
+    @RenderBody()
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+    @RenderPage("footer.cshtml")
+
+</body>
+</html>

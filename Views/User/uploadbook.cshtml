@@ -1,0 +1,99 @@
+﻿
+	
+	<div id="body">
+		<div class="content">
+			<div class="section">
+				<div class="booking">
+					<h2>Add Book</h2>
+					<form action="/User/savebook" method="post" enctype="multipart/form-data">
+						<h4>fill in Book details</h4>
+                        <p>@ViewBag.error</p>
+						<div class="form1">
+							<label for="Title"> <span>Title *</span>
+								<input type="text" name="Title" id="Title">
+							</label>
+							<label for="subject"> <span>Subject *</span>
+								
+                                <select name="subject" id="Subject">
+										<option value="Computer">Computer</option>
+										<option value="Physics">Physics</option>
+										<option value="Math">Math</option>
+                                        <option value="Programming">Programming</option>
+                                        <option value="Chemistry">Chemistry</option>
+                                        <option value="Bio">Bio</option>
+								</select>
+							</label>
+							<label for="Author"> <span>Author *</span>
+								<input type="text" required="required" name="Author" id="Author" >
+							</label>
+							<label for="edition"> <span>Edition</span>
+								<input type="number" min="1" name="edition" id="Edition">
+							</label>
+							<label for="NumberOfBooks"> <span>Number Of Books</span>
+								<input type="number" required="required" min="1" name="NumberOfBooks" id="NumberOfBooks">
+							</label>
+                            <div>
+							    <label for="Available"> <span>Available</span>
+								    <select name="Available" id="Available">
+										    <option value="Yes">Yes</option>
+										    <option value="No">No</option>
+										
+								    </select>
+							    </label>
+                            </div>
+                            <label for="uploadimage"> <span>Upload Image</span>
+                                <input type="file" name="uploadimage" id ="fname"/>
+                            </label>
+							<label for="ShelfNo"> <span>Shelf No</span>
+								<input type="number" required="required" min="0" name="ShelfNo" id="ShelfNo">
+							</label>
+						</div>
+						
+						<input type="submit" name="send2" id="send2" value="">
+					</form>
+				</div>
+			</div>
+			<div class="sidebar">
+				<div class="contact">
+					<div>
+						<a href="gallery.html"><img src="~/images/lava2.jpg" alt=""></a>
+					</div>
+					<h4>contact information</h4>
+					<ul>
+						<li>
+							<b>address:</b> <span>426 Grant Street Pine Hill, TX 75652</span>
+						</li>
+						<li>
+							<b>phone:</b> <span>903-889-6313</span>
+						</li>
+						<li>
+							<b>fax:</b> <span>903-889-6313</span>
+						</li>
+						<li>
+							<b>email:</b> <span><a href="http://www.freewebsitetemplates.com/misc/contact">info@carrepairshop.com</a></span>
+						</li>
+					</ul>
+				</div>
+				<div class="featured">
+					<h3>featured services</h3>
+					<ul>
+						<li>
+							<a href="/LMS/services">engine maintenance</a>
+						</li>
+						<li>
+							<a href="/LMS/services">wheel alignment</a>
+						</li>
+						<li>
+							<a href="/LMS/services">air condition services</a>
+						</li>
+						<li>
+							<a href="/LMS/services">transmission</a>
+						</li>
+						<li>
+							<a href="/LMS/services">promos &amp; discounts</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>

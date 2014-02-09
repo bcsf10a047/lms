@@ -1,0 +1,77 @@
+﻿
+
+	<div id="body">
+		<div class="content">
+			<div class="section">
+				<div class="contact">
+					<h2>Sign In</h2>
+                    <p id="p1"></p>
+                    @using (Html.BeginForm("signin", "User", FormMethod.Post, new { id = "fsignin" }))
+                    {
+                    @Html.Label("email", "Email");
+                    <span></span>
+                    @Html.TextBox("email", "", new { id = "email" });
+                    
+                    @Html.Label("password", "Password");
+                    <span></span>
+                    @Html.Password("password", "");
+                    <input type="submit" name="send" id="send" value="">
+
+                        
+                    <input type="button" name="send3" id="send3" value="" >
+                    }
+				</div>
+			  </div>
+			<div class="sidebar">
+				<div class="contact">
+					<div>
+						<a href="gallery.html"><img src="~/images/lava2.jpg" alt=""></a>
+					</div>
+					<h4>contact information</h4>
+					<ul>
+						<li>
+							<b>address:</b> <span>426 Grant Street Pine Hill, TX 75652</span>
+						</li>
+						<li>
+							<b>phone:</b> <span>903-889-6313</span>
+						</li>
+						<li>
+							<b>fax:</b> <span>903-889-6313</span>
+						</li>
+						<li>
+							<b>email:</b> <span><a href="http://www.freewebsitetemplates.com/misc/contact">info@carrepairshop.com</a></span>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+ 
+<script src="~/Scripts/jquery-1.8.2.js" type="text/javascript"></script>
+<script>
+        $('#send3').click(
+        function () {
+            window.location = "signup";
+        });
+        
+</script>
+<script>
+    $('#send').click(function () {
+        //alert("hi");
+        var email = $('#email').val();
+        var pass = $('#password').val();
+        $.getJSON("/User/verify?"+"email="+email+"&password="+pass, function (data) {
+            if (data) {
+               // alert(data);
+                $('#lisign').html("<a href=\"/User/signout\">Sign out</a>");
+                window.location = "/LMS/index";
+            }
+            else {
+                $('#p1').text("Wrong User Name or Password");
+            }
+            
+        });
+        return false;
+    });
+</script>
+   

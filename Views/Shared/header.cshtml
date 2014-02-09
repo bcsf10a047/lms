@@ -1,0 +1,84 @@
+﻿    <div id="header">
+		<div>
+			<a href="/LMS/index" class="logo"><img src="~/images/logo.png" alt=""></a>
+			<form action="/LMS/services">
+				<input type="text" name="search" id="search" value="">
+				<input type="submit" name="searchBtn" id="searchBtn" value="">
+			</form>
+		</div>
+		<div class="navigation">
+			<ul>
+				<li class="selected">
+					<a href="/LMS/index">home</a>
+				</li>
+				<li>
+					<a href="/LMS/about">about</a>
+					<ul>
+						<li>
+							<a href="/LMS/team">the team</a>
+						</li>
+						<li>
+							<a href="/LMS/testimonials">testimonials</a>
+						</li>
+						<li>
+							<a href="/LMS/gallery">gallery</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="/LMS/services">categories</a>
+					<ul>
+						<li>
+							<a href="/LMS/services?currentFilter=Computer">Computer</a>
+						</li>
+						<li>
+							<a href="/LMS/services">Physics</a>
+						</li>
+						<li>
+							<a href="/LMS/services">Math</a>
+						</li>
+						<li>
+							<a href="/LMS/services">Programming</a>
+						</li>
+						<li>
+							<a href="/LMS/services">Chemistry</a>
+						</li>
+                        <li>
+							<a href="/LMS/services">Bio</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="/User/member">Members</a>
+				</li>
+				<li>
+					<a href="/LMS/contact">contact</a>
+				</li>
+                                  
+                    @{
+                        
+                   LMS.Models.User u = (LMS.Models.User)Session["User"];
+                    <li id="lisign" class="selected booking">
+                        @if (u == null || Session["SignIn"] != null && (bool)Session["SignIn"] == false)
+                        {   
+                        
+                                <a href="/User/signin">Sign In</a>
+                        
+                        }
+                        else if (Session["SignIn"] != null && (bool)Session["SignIn"] == true)
+                        {
+                        
+                                <a href="/User/signout">Sign out</a>
+                        
+                        }
+                        else
+                        {
+                            <a href="/User/signin">Sign In</a>
+                        }
+                    
+                    </li>				
+ 
+                }
+				</ul>
+		</div>
+	</div>

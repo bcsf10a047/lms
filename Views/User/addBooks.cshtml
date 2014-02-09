@@ -1,0 +1,44 @@
+﻿@{
+ Layout = null;   
+}
+<div class="booking">
+	<h2>Add Book</h2>
+	<form action="/User/savebook" method="post" enctype="multipart/form-data">
+		<h4>fill in Book details</h4>
+        <p>@ViewBag.error</p>
+		<div class="form1">
+			<label for="Title"> <span>Title *</span>
+				<input type="text" name="Title" id="Title">
+			</label>
+			<label for="subject"> <span>Subject *</span>
+				<input type="text" name="subject" id="Subject">
+			</label>
+			<label for="Author"> <span>Author *</span>
+				<input type="text" required="required" name="Author" id="Author" >
+			</label>
+			<label for="edition"> <span>Edition</span>
+				<input type="number" min="1" name="edition" id="Edition">
+			</label>
+			<label for="NumberOfBooks"> <span>Number Of Books</span>
+				<input type="number" required="required" min="1" name="NumberOfBooks" id="NumberOfBooks">
+			</label>
+            <div>
+				<label for="Available"> <span>Available</span>
+					<select name="Available" id="Available">
+							<option value="Yes">Yes</option>
+							<option value="No">No</option>
+										
+					</select>
+				</label>
+            </div>
+            <label for="uploadimage"> <span>Upload Image</span>
+                <input type="file" name="uploadimage" id ="fname"/>
+            </label>
+			<label for="ShelfNo"> <span>Shelf No</span>
+				<input type="number" required="required" min="0" name="ShelfNo" id="ShelfNo">
+			</label>
+		</div>
+						
+		<input type="submit" name="send2" id="send2" value="">
+	</form>
+</div>
