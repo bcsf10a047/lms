@@ -1,0 +1,128 @@
+@model PagedList.IPagedList<LMS.Models.Book>
+@using PagedList.Mvc;
+	<div id="body">
+		<div class="content">
+			<div class="section">
+				<div class="breadcrumb">
+					<span>You are here:</span>
+					<ul>
+						<li>
+							<a href="index.html">home</a>
+						</li>
+						<li>
+							<a href="~/Views/LMS/services">services</a>
+						</li>
+						<li>
+							<a href="~/Views/LMS/services">engine maintenance</a>
+						</li>
+					</ul>
+				</div>
+				<div class="services">
+					<h2>services</h2>
+					<ul id="booklist">
+                        @{
+                            foreach (var x in Model)
+                            {
+                                
+                                string path = "/booksimages/" + x.ImageName;
+                                <li>
+                                    <div>
+                                        <a href="#" class="figure"><img src="@path" alt="" width="80" height="80"/></a>
+                                        <h3>@x.Title</h3>
+                                            @{
+                                                string islink;
+                                                string iss;
+                                                LMS.Models.User u = (LMS.Models.User)Session["User"];
+                                                var arr = x.Borrows.Where(y=>y.bid==x.bId && y.mid==u.Id && y.returnd == 0).ToArray();
+                                                int len = arr.Length;
+                                                if (x.Available.Equals("Yes")&&len == 0)
+                                                {
+                                                    islink = "/user/issue/"+x.bId;
+                                                    iss = "issue";
+                                                    <p>Available</p>
+                                                }
+                                                else if (len > 0)
+                                                {
+                                                    islink = "/user/returnBook/"+x.bId;
+                                                    iss = "return";
+                                                    <p>@arr.First().DateOfReturn</p>
+                                                }
+                                                else
+                                                {
+                                                    islink = "#";
+                                                    iss="";
+                                                    <p>Not Available</p>
+                                                }
+                                           }
+                                        <p>
+                                          <strong>
+                                              No of Available Copies:
+                                          </strong>  
+                                            @x.NumberOfAvailableBooks
+                                        </p>
+
+                                     </div>
+
+                                    <div>
+                                        <a href="@islink" >@iss</a>
+                                    </div>
+                                </li>
+                            }
+                        }
+					</ul>
+				</div>
+                <div>
+                    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount;
+                    
+@Html.PagedListPager(Model, page => Url.Action("services", new { page, currentFilter = ViewBag.CurrentFilter }));
+                </div>
+			</div>
+			<div class="sidebar">
+				<div class="navigation">
+					<h3>Services</h3>
+					<ul>
+						<li class="selected">
+							<a href="/LMS/services">engine maintenance</a>
+						</li>
+						<li>
+							<a href="/LMS/services">wheel alignment</a>
+						</li>
+						<li>
+							<a href="/LMS/services">air condition services</a>
+						</li>
+						<li>
+							<a href="/LMS/services">transmission</a>
+						</li>
+						<li>
+							<a href="promo.html">promos &amp; discounts</a>
+						</li>
+					</ul>
+				</div>
+				<div class="contact">
+					<h3>contact information</h3>
+					<ul>
+						<li>
+							<b>address:</b> <span>426 Grant Street Pine Hill, TX 75652</span>
+						</li>
+						<li>
+							<b>phone:</b> <span>903-889-6313</span>
+						</li>
+						<li>
+							<b>fax:</b> <span>903-889-6313</span>
+						</li>
+						<li>
+							<b>email:</b> <span><a href="http://www.freewebsitetemplates.com/misc/contact">info@carrepairshop.com</a></span>
+						</li>
+					</ul>
+				</div>
+				<div class="gallery">
+					<h3>featured from gallery</h3>
+					<a href="gallery.html" class="figure"><img src="~/images/featured.jpg" alt=""></a> <span><a href="gallery.html">Aenean interdum erat urna</a></span>
+					<p>
+						Nam lectus quam, dictum a vehicula ut, congue ac arcu. Sed vitae nisi ut nibh iaculis bibendums.
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+
